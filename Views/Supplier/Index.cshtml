@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Practical1.Models.Suppliers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>List of all the suppliers</h1>
+
+<a asp-action="Create">Insert new supplier</a>
+
+<form asp-action="Search" method="get" class="d-flex mb-4">
+    <input class="form-control me-2" type="text" name="query" placeholder="Search Suppliers..." />
+    <button type="submit" class="btn btn-primary mb-3">Search</button>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Contact Name</th>
+            <th>Contact Title</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Region</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+            <th>Phone</th>
+            <th>Fax</th>
+            <th>Home Page</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            foreach (var supplier in Model)
+            {
+                <tr>
+                    <td>@supplier.CompanyName</td>
+                    <td>@supplier.ContactName</td>
+                    <td>@supplier.ContactTitle</td>
+                    <td>@supplier.Address</td>
+                    <td>@supplier.City</td>
+                    <td>@supplier.Region</td>
+                    <td>@supplier.PostalCode</td>
+                    <td>@supplier.Country</td>
+                    <td>@supplier.Phone</td>
+                    <td>@supplier.Fax</td>
+                    <td>@supplier.HomePage</td>
+                    <td>
+                        <a asp-action="Edit" class="btn btn-primary" asp-route-id="@supplier.SupplierID">Edit</a>
+                   </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
